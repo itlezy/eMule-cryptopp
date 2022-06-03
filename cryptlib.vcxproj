@@ -68,7 +68,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <TargetName>cryptlib</TargetName>
     <TargetExt>.lib</TargetExt>
-    <UseOfMfc>false</UseOfMfc>
+    <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
