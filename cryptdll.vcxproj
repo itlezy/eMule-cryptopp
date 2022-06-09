@@ -51,7 +51,7 @@
     <TargetName>cryptopp</TargetName>
     <TargetExt>.dll</TargetExt>
     <UseOfMfc>false</UseOfMfc>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <OutDir>$(Platform)\DLL_Output\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(ProjectName)\$(Configuration)\</IntDir>
