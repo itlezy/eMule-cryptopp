@@ -1129,8 +1129,13 @@ void DetectArmFeatures()
 
 	// The CPU_ProbeXXX's return false for OSes which
 	// can't tolerate SIGILL-based probes
+#if defined(_WIN32) && defined(_M_ARM64)
+	g_hasARMv7 = CPU_QueryARMv7();
+	g_hasNEON = CPU_QueryNEON();
+#else
 	g_hasARMv7 = CPU_QueryARMv7() || CPU_ProbeARMv7();
 	g_hasNEON = CPU_QueryNEON() || CPU_ProbeNEON();
+#endif
 	g_hasCRC32 = CPU_QueryCRC32() || CPU_ProbeCRC32();
 	g_hasPMULL = CPU_QueryPMULL() || CPU_ProbePMULL();
 	g_hasAES  = CPU_QueryAES() || CPU_ProbeAES();

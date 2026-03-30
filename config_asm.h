@@ -353,8 +353,18 @@
 // Limit the <arm_acle.h> include.
 #if !defined(CRYPTOPP_ARM_ACLE_HEADER)
 # if defined(__aarch32__) || defined(__aarch64__) || (__ARM_ARCH >= 8) || defined(__ARM_ACLE)
-#  define CRYPTOPP_ARM_ACLE_HEADER 1
+#  if !(defined(CRYPTOPP_MSC_VERSION) && defined(_M_ARM64))
+#   define CRYPTOPP_ARM_ACLE_HEADER 1
+#  endif
 # endif
+#endif
+
+// Visual Studio ARM64 exposes the required intrinsics through its ARM headers
+// but does not ship <arm_acle.h>. Keep the SIMD code enabled without forcing
+// a missing SDK header into the build.
+#if defined(CRYPTOPP_MSC_VERSION) && defined(_M_ARM64)
+# undef CRYPTOPP_ARM_ACLE_HEADER
+# define CRYPTOPP_ARM_ACLE_HEADER 0
 #endif
 
 // Apple M1 hack. Xcode cross-compiles for iOS lack

@@ -8,17 +8,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
+    <ProjectConfiguration Include="Debug|ARM64">
       <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
+      <Platform>ARM64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
+    <ProjectConfiguration Include="Release|ARM64">
       <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
+      <Platform>ARM64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="DLL-Import Debug|Win32">
       <Configuration>DLL-Import Debug</Configuration>
@@ -36,7 +36,13 @@
       <Configuration>DLL-Import Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-  </ItemGroup>
+  <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration><ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration></ItemGroup>
   <!-- Microsoft documentation clearly shows the Global property group -->
   <!-- precedes the import of Cpp.Default.props and Cpp.props -->
   <!-- https://msdn.microsoft.com/en-us/library/2208a1f2.aspx -->
@@ -158,7 +164,7 @@
   <!-- X64 Configurations -->
   <ItemDefinitionGroup Condition="'$(Platform)'=='x64'" Label="X64 Configuration">
     <Lib>
-      <TargetMachine>MachineX64</TargetMachine>
+      <TargetMachine>MachineARM64</TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <!-- Original File with special treatment -->
@@ -374,21 +380,13 @@
       <Command>ml.exe /c /nologo /D_M_X86 /W3 /Cx /Zi /safeseh /Fo"$(IntDir)rdrand-x86.obj" "%(FullPath)"</Command>
       <Outputs>$(IntDir)\rdrand-x86.obj;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Condition="'$(Platform)'=='x64'" Include="rdrand.asm">
-      <Message>Building and assembling rdrand.asm</Message>
-      <Command>ml64.exe /c /nologo /D_M_X64 /W3 /Cx /Zi /Fo"$(IntDir)rdrand-x64.obj" "%(FullPath)"</Command>
-      <Outputs>$(IntDir)\rdrand-x64.obj;%(Outputs)</Outputs>
-    </CustomBuild>
+    
     <CustomBuild Condition="'$(Platform)'=='Win32'" Include="rdseed.asm">
       <Message>Building and assembling rdseed.asm</Message>
       <Command>ml.exe /c /nologo /D_M_X86 /W3 /Cx /Zi /safeseh /Fo"$(IntDir)rdseed-x86.obj" "%(FullPath)"</Command>
       <Outputs>$(IntDir)\rdseed-x86.obj;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Condition="'$(Platform)'=='x64'" Include="rdseed.asm">
-      <Message>Building and assembling rdseed.asm</Message>
-      <Command>ml64.exe /c /nologo /D_M_X64 /W3 /Cx /Zi /Fo"$(IntDir)rdseed-x64.obj" "%(FullPath)"</Command>
-      <Outputs>$(IntDir)\rdseed-x64.obj;%(Outputs)</Outputs>
-    </CustomBuild>
+    
     <CustomBuild Condition="'$(Platform)'=='x64' AND ('$(Configuration)'=='Debug' Or '$(Configuration)'=='Release')" Include="x64dll.asm">
       <Message>Building and assembling x64dll.asm</Message>
       <Command>ml64.exe /c /nologo /D_M_X64 /W3 /Zi /Fo"$(IntDir)x64dll.obj" "%(FullPath)"</Command>
