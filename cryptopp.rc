@@ -45,13 +45,13 @@ BEGIN
         BEGIN
             VALUE "Comments", "Free crypto library, more information available at www.cryptopp.com"
             VALUE "CompanyName", "Wei Dai"
-            VALUE "FileDescription", "Crypto++® Library DLL"
+            VALUE "FileDescription", "Crypto++Â® Library DLL"
             VALUE "FileVersion", "8, 3, 0, 0"
             VALUE "InternalName", "cryptopp"
-            VALUE "LegalCopyright", "Copyright© 1995-2019 by Wei Dai"
-            VALUE "LegalTrademarks", "Crypto++®"
+            VALUE "LegalCopyright", "CopyrightÂ© 1995-2019 by Wei Dai"
+            VALUE "LegalTrademarks", "Crypto++Â®"
             VALUE "OriginalFilename", "cryptopp.dll"
-            VALUE "ProductName", "Crypto++® Library"
+            VALUE "ProductName", "Crypto++Â® Library"
             VALUE "ProductVersion", "8, 3, 0, 0"
         END
     END
@@ -68,18 +68,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE 
+1 TEXTINCLUDE
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE 
+2 TEXTINCLUDE
 BEGIN
     "#include ""windows.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE 
+3 TEXTINCLUDE
 BEGIN
     "\r\n"
     "\0"
@@ -101,4 +101,3 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
-

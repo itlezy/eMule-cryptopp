@@ -61,4 +61,3 @@ Test: TestVectors/vmac.txt
 Test: TestVectors/wake.txt
 Test: TestVectors/whrlpool.txt
 Test: TestVectors/xts.txt
-
