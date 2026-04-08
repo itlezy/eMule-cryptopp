@@ -12,6 +12,10 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -19,6 +23,10 @@
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="DLL-Import Debug|Win32">
       <Configuration>DLL-Import Debug</Configuration>
@@ -106,9 +114,11 @@
     <ClCompile>
       <PreprocessorDefinitions>USE_PRECOMPILED_HEADERS;_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>Disabled</Optimization>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <ResourceCompile>
@@ -122,9 +132,11 @@
       <PreprocessorDefinitions>NDEBUG;USE_PRECOMPILED_HEADERS;_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <OmitFramePointers>true</OmitFramePointers>
       <Optimization>MaxSpeed</Optimization>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -158,6 +170,12 @@
   <ItemDefinitionGroup Condition="'$(Platform)'=='x64'" Label="X64 Configuration">
     <Lib>
       <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <!-- ARM64 Configurations -->
+  <ItemDefinitionGroup Condition="'$(Platform)'=='ARM64'" Label="ARM64 Configuration">
+    <Lib>
+      <TargetMachine>MachineARM64</TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <!-- Original File with special treatment -->
@@ -197,6 +215,7 @@
     <ClCompile Include="chacha_avx.cpp">
       <!-- Requires Visual Studio 2013 and above -->
       <ExcludedFromBuild Condition=" '$(PlatformToolset)' == 'v100' Or '$(PlatformToolset)' == 'v110' ">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition=" '$(Platform)' == 'ARM64' ">true</ExcludedFromBuild>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <ClCompile Include="chachapoly.cpp" />
